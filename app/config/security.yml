@@ -1,0 +1,32 @@
+security:
+    firewalls:
+        identificarse:
+          pattern: ^/*          
+          anonymous: ~
+          provider: users
+          form_login:
+            login_path: login
+            check_path: /login_check
+          logout:
+            path: logout
+            target: /
+
+    providers:
+        users:
+            entity: { class: Web\BlogBundle\Entity\Users, property: email }
+    
+    access_control:
+        - { path: ^/registro, roles: IS_AUTHENTICATED_ANONYMOUSLY}  
+    
+    encoders:
+        Web\BlogBundle\Entity\Users: { algorithm: sha512, iterations: 10 }
+         
+            
+
+    
+    
+
+    
+
+    
+       

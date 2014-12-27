@@ -1,0 +1,56 @@
+{% extends "::plantilla.html.twig" %}
+{# 
+    Comentario en Twig
+    Estamos en MIBUNDLE/views/Default/listar.html.twig
+#}
+
+{% block content%}
+    {# Imprimir en Twig #}
+    {{"Hola"}}
+
+    {# var_dump() en Twig #}
+    {{ dump(posts) }}
+
+    {# Definiendo variable #}
+    {% set listado = 'Listado' %}
+
+    <h1>{{listado}}:</h1>
+    {# Bucle en Twig #}
+    {% for post in posts %}
+        {{ post.title }} <br/>
+        {{ post.description }}<hr/>
+    {% endfor %}
+
+    <br/>
+    {# Filtro en Twig #}    
+    {% filter upper %}
+    Soy Víctor Robles
+    {% endfilter %}
+
+    <br/><br/>
+    {# If en Twig #}
+    {% if posts|length >= 2 %}
+    Mayor o igual a dos
+    {% endif %}
+
+    <br/><br/>
+    {# Includes en Twig #}
+    {% include "PruebasEjemploBundle:Default:index.html.twig" with { name: "Include desde twig" } %}
+    
+    <p>Entorno: {{app.environment}} </p>
+    <p>Usuario: {{dump(app.security)}} </p>
+    
+app.user
+app.request
+app.request.get('foo') //get
+app.request.request.get('foo') //post
+app.session
+app.environment
+app.debug
+{%endblock%}
+    
+    
+{%block title%}
+    Usando plantillas TWIG
+{%endblock%}
+

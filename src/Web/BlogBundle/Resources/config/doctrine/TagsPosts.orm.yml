@@ -1,0 +1,38 @@
+Web\BlogBundle\Entity\TagsPosts:
+    type: entity
+    table: tags_posts
+    indexes:
+        fk_tag_id_tp:
+            columns:
+                - tag_id
+        fk_post_id_tp:
+            columns:
+                - post_id
+    id:
+        id:
+            type: bigint
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        tag:
+            targetEntity: Tags
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tag_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        post:
+            targetEntity: Posts
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                post_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,17 @@
+home:
+    pattern:  /
+    defaults: { _controller: WebBlogBundle:Posts:index }
+    
+registro:
+    pattern:  /registro
+    defaults: { _controller: WebBlogBundle:Default:index }
+
+login:
+  pattern: /login
+  defaults: { _controller: WebBlogBundle:Default:login }
+
+login_check:
+   pattern: /login_check
+
+logout:
+  pattern: /logout
