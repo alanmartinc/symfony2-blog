@@ -53,7 +53,7 @@ Web\BlogBundle\Entity\Posts:
             targetEntity: Categories
             cascade: {  }
             mappedBy: null
-            inversedBy: null
+            inversedBy: posts
             joinColumns:
                 category_id:
                     referencedColumnName: id
@@ -62,9 +62,15 @@ Web\BlogBundle\Entity\Posts:
             targetEntity: Users
             cascade: {  }
             mappedBy: null
-            inversedBy: null
+            inversedBy: posts
             joinColumns:
                 user_id:
                     referencedColumnName: id
             orphanRemoval: false
+    oneToMany:
+        tagsPosts:
+            targetEntity: TagsPosts
+            mappedBy: post
+            cascade: ["persist"]
     lifecycleCallbacks: {  }
+

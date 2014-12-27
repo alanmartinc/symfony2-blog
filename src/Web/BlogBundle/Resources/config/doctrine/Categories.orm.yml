@@ -15,4 +15,9 @@ Web\BlogBundle\Entity\Categories:
             nullable: true
             length: 255
             fixed: false
+    oneToMany:
+        posts:
+            targetEntity: Posts
+            mappedBy: category
+            cascade: ["persist"]
     lifecycleCallbacks: {  }

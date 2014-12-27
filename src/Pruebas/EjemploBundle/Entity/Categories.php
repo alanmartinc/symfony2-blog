@@ -19,6 +19,10 @@ class Categories
      */
     private $name;
 
+    /**
+     * @var \Web\BlogBundle\Entity\Posts
+     */
+    private $posts;
 
     /**
      * Get id
@@ -51,5 +55,28 @@ class Categories
     public function getName()
     {
         return $this->name;
+    }
+    
+    /**
+     * Add Posts
+     *
+     * @param  Post $post
+     * @return Course
+     */
+    public function addPosts($post)
+    {
+        $this->posts[] = $post;
+
+        return $this;
+    }
+
+    /**
+     * Get Posts
+     *
+     * @return ArrayCollection
+     */
+    public function getPosts()
+    {
+        return $this->posts;
     }
 }

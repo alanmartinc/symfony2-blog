@@ -3,12 +3,13 @@
 namespace Web\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Posts
  */
-class Posts
-{
+class Posts {
+
     /**
      * @var integer
      */
@@ -59,14 +60,21 @@ class Posts
      */
     private $user;
 
+    /**
+     * @var \Web\BlogBundle\Entity\TagsPosts
+     */
+    protected $tagsPosts;
+
+    public function __construct() {
+        $this->tagsPosts = new ArrayCollection();
+    }
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -76,8 +84,7 @@ class Posts
      * @param string $title
      * @return Posts
      */
-    public function setTitle($title)
-    {
+    public function setTitle($title) {
         $this->title = $title;
 
         return $this;
@@ -88,8 +95,7 @@ class Posts
      *
      * @return string 
      */
-    public function getTitle()
-    {
+    public function getTitle() {
         return $this->title;
     }
 
@@ -99,8 +105,7 @@ class Posts
      * @param string $description
      * @return Posts
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
 
         return $this;
@@ -111,8 +116,7 @@ class Posts
      *
      * @return string 
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -122,8 +126,7 @@ class Posts
      * @param string $image
      * @return Posts
      */
-    public function setImage($image)
-    {
+    public function setImage($image) {
         $this->image = $image;
 
         return $this;
@@ -134,8 +137,7 @@ class Posts
      *
      * @return string 
      */
-    public function getImage()
-    {
+    public function getImage() {
         return $this->image;
     }
 
@@ -145,8 +147,7 @@ class Posts
      * @param string $content
      * @return Posts
      */
-    public function setContent($content)
-    {
+    public function setContent($content) {
         $this->content = $content;
 
         return $this;
@@ -157,8 +158,7 @@ class Posts
      *
      * @return string 
      */
-    public function getContent()
-    {
+    public function getContent() {
         return $this->content;
     }
 
@@ -168,8 +168,7 @@ class Posts
      * @param string $status
      * @return Posts
      */
-    public function setStatus($status)
-    {
+    public function setStatus($status) {
         $this->status = $status;
 
         return $this;
@@ -180,8 +179,7 @@ class Posts
      *
      * @return string 
      */
-    public function getStatus()
-    {
+    public function getStatus() {
         return $this->status;
     }
 
@@ -191,8 +189,7 @@ class Posts
      * @param \DateTime $date
      * @return Posts
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -203,8 +200,7 @@ class Posts
      *
      * @return \DateTime 
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -214,8 +210,7 @@ class Posts
      * @param \DateTime $time
      * @return Posts
      */
-    public function setTime($time)
-    {
+    public function setTime($time) {
         $this->time = $time;
 
         return $this;
@@ -226,8 +221,7 @@ class Posts
      *
      * @return \DateTime 
      */
-    public function getTime()
-    {
+    public function getTime() {
         return $this->time;
     }
 
@@ -237,8 +231,7 @@ class Posts
      * @param \Web\BlogBundle\Entity\Categories $category
      * @return Posts
      */
-    public function setCategory(\Web\BlogBundle\Entity\Categories $category = null)
-    {
+    public function setCategory(\Web\BlogBundle\Entity\Categories $category = null) {
         $this->category = $category;
 
         return $this;
@@ -249,8 +242,7 @@ class Posts
      *
      * @return \Web\BlogBundle\Entity\Categories 
      */
-    public function getCategory()
-    {
+    public function getCategory() {
         return $this->category;
     }
 
@@ -260,8 +252,7 @@ class Posts
      * @param \Web\BlogBundle\Entity\Users $user
      * @return Posts
      */
-    public function setUser(\Web\BlogBundle\Entity\Users $user = null)
-    {
+    public function setUser(\Web\BlogBundle\Entity\Users $user = null) {
         $this->user = $user;
 
         return $this;
@@ -272,8 +263,29 @@ class Posts
      *
      * @return \Web\BlogBundle\Entity\Users 
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->user;
     }
+
+    /**
+     * Add tagsPosts
+     *
+     * @param  Tag $tag
+     * @return Course
+     */
+    public function addTagsPosts($tag) {
+        $this->tagsPosts[] = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Get tagsPosts
+     *
+     * @return ArrayCollection
+     */
+    public function getTagsPosts() {
+        return $this->tagsPosts;
+    }
+
 }

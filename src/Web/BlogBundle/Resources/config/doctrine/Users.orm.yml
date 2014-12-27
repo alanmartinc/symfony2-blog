@@ -51,4 +51,9 @@ Web\BlogBundle\Entity\Users:
         time:
             type: time
             nullable: true
+    oneToMany:
+        posts:
+            targetEntity: Posts
+            mappedBy: user
+            cascade: ["persist"]
     lifecycleCallbacks: {  }

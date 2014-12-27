@@ -30,7 +30,7 @@ Web\BlogBundle\Entity\TagsPosts:
             targetEntity: Posts
             cascade: {  }
             mappedBy: null
-            inversedBy: null
+            inversedBy: tagsPosts
             joinColumns:
                 post_id:
                     referencedColumnName: id

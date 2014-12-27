@@ -66,8 +66,15 @@ class DefaultController extends Controller {
             }
         }
 
+        //Categorias
+        $em = $this->getDoctrine()->getEntityManager();
+        $categoryRepository=$em->getRepository("WebBlogBundle:Categories");
+        $categories=$categoryRepository->findAll();
 
-        return $this->render('WebBlogBundle:Default:registro.html.twig', array('registro_form' => $registro_form->createView()));
+        return $this->render('WebBlogBundle:Default:registro.html.twig', 
+                array('registro_form' => $registro_form->createView(),
+                    "categories"=>$categories
+                ));
     }
     
     

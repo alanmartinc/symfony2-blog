@@ -20,9 +20,15 @@ class PostsController extends Controller {
     }
 
     public function indexAction(Request $request) {
+        //Entity Manager
+        $em = $this->getDoctrine()->getEntityManager();
+        $categoryRepository=$em->getRepository("WebBlogBundle:Categories");
+        $categories=$categoryRepository->findAll();
         
 
-        return $this->render('WebBlogBundle:Posts:index.html.twig');
+        return $this->render('WebBlogBundle:Posts:index.html.twig', array(
+            "categories"=>$categories
+        ));
     }
     
     

@@ -3,7 +3,10 @@
 namespace Web\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
+
+
 /**
  * Users
  */
@@ -83,7 +86,16 @@ class Users implements UserInterface
      * @var \DateTime
      */
     private $time;
+    
+    /**
+     * @var \Web\BlogBundle\Entity\Posts
+     */
+    protected $posts;
 
+    public function __construct()
+    {
+        $this->posts = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -300,5 +312,28 @@ class Users implements UserInterface
     public function getTime()
     {
         return $this->time;
+    }
+    
+    /**
+     * Add Posts
+     *
+     * @param  Post $post
+     * @return Course
+     */
+    public function addPosts($post)
+    {
+        $this->posts[] = $post;
+
+        return $this;
+    }
+
+    /**
+     * Get Posts
+     *
+     * @return ArrayCollection
+     */
+    public function getPosts()
+    {
+        return $this->posts;
     }
 }
