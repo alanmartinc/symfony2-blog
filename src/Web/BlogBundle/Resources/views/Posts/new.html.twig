@@ -1,0 +1,20 @@
+{% extends "::plantilla.html.twig" %}
+
+{%block categorias%}
+        {% for category in categories %}
+             <li><a href="#">{{ category.name }}</a></li>
+        {% endfor %}
+{%endblock%}
+
+{%block content %}
+<h2>Nuevo post</h2>
+<hr/>
+{% for mensaje in app.session.flashbag().get('new') %}
+<p class="info">{{ mensaje }}</p>
+{% endfor %}
+<form action="" method="post" {{ form_enctype(new_post_form) }}>
+Categoria:{{ form_widget(new_post_form.category) }}
+{{ form_widget(new_post_form) }}
+{{ form_errors(new_post_form) }}
+</form>
+{%endblock%}

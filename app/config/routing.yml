@@ -1,11 +1,7 @@
 web_blog:
     resource: "@WebBlogBundle/Resources/config/routing.yml"
     prefix:   /
-
-pruebas_ejemplo:
-    resource: "@PruebasEjemploBundle/Resources/config/routing.yml"
-    prefix:   /
-
+    
 app:
     resource: @AppBundle/Controller/
     type:     annotation

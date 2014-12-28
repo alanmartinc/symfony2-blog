@@ -15,3 +15,8 @@ login_check:
 
 logout:
   pattern: /logout
+
+new_post:
+  pattern: /nuevo-post
+  defaults: { _controller: WebBlogBundle:Posts:new }
+  

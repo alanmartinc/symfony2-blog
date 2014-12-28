@@ -1,0 +1,10 @@
+Web\BlogBundle\Entity\Posts:
+    properties: 
+     title:
+       - NotBlank: {message:"El titulo no puede estar vacío"}
+       - Length: 
+            min: 5
+            minMessage: "El titulo debe tener {{ limit }} caracteres de largo"
+     description:
+       - NotBlank: {message:"La descripción no puede estar vacía"}
+      
