@@ -1,6 +1,10 @@
-home:
+inicio:
     pattern:  /
-    defaults: { _controller: WebBlogBundle:Posts:index }
+    defaults: { _controller: WebBlogBundle:Posts:index, page:1 }
+
+home:
+    pattern:  /inicio/{page}
+    defaults: { _controller: WebBlogBundle:Posts:index, page:1 }
     
 registro:
     pattern:  /registro
@@ -19,4 +23,12 @@ logout:
 new_post:
   pattern: /nuevo-post
   defaults: { _controller: WebBlogBundle:Posts:new }
+  
+edit_post:
+  pattern: /editar-post/{post}
+  defaults: { _controller: WebBlogBundle:Posts:edit }
+  
+delete_post:
+  pattern: /delete-post/{post}
+  defaults: { _controller: WebBlogBundle:Posts:delete }
   

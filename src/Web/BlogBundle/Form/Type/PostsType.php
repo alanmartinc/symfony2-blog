@@ -23,6 +23,13 @@ class PostsType extends AbstractType
                     "required" => false,
                     "attr" => array('class' => 'form-control')))
                 
+            ->add('category', 'entity', array(
+                "label" => "Categoria: ",
+                'class' => 'WebBlogBundle:Categories',
+                "attr" => array('class' => 'form-control'),
+                "property"=>"name"
+            ))
+                
             ->add('image','file', array("label" => "Imagen: ",
                     "required" => false,
                     "attr" => array('class' => '')))
@@ -30,6 +37,13 @@ class PostsType extends AbstractType
             ->add('content','textarea', array("label" => "Contenido: ",
                     "required" => false,
                     "attr" => array('class' => 'form-control')))
+            
+            ->add('tagsPosts', 'text', array(
+                "label" => "Etiquetas: ",
+                'mapped'=>false,  
+                "attr" => array('class' => 'form-control'),
+
+            ))
                 
             ->add('Guardar', 'submit', array("attr" => array('class' => 'btn btn-success')));
         ;

@@ -84,7 +84,7 @@ class DefaultController extends Controller {
            return $this->redirect($this->generateURL('registro'));
         }else{
             if($this->get('security.context')->isGranted('ROLE_USUARIO')){
-                return $this->redirect($this->generateURL('inicio'));
+                return $this->redirect($this->generateURL('home'));
             }
         }
     }

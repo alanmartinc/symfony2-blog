@@ -273,7 +273,7 @@ class Posts {
      * @param  Tag $tag
      * @return Course
      */
-    public function addTagsPosts($tag) {
+    public function addTagsPosts(\Web\BlogBundle\Entity\Tags $tag) {
         $this->tagsPosts[] = $tag;
 
         return $this;
@@ -288,4 +288,53 @@ class Posts {
         return $this->tagsPosts;
     }
 
+    //SUBIDAS
+    public function getAbsolutePath() {
+        return null === $this->image ? null : $this->getUploadRootDir() . '/' . $this->image;
+    }
+
+    public function getWebPath() {
+        return null === $this->image ? null : $this->getUploadDir() . '/' . $this->image;
+    }
+
+    public function getUploadRootDir() {
+        // la ruta absoluta del directorio donde se deben
+        // guardar los archivos cargados
+        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
+    }
+
+    protected function getUploadDir() {
+        // se deshace del __DIR__ para no meter la pata
+        // al mostrar el documento/imagen cargada en la vista.
+        return 'uploads';
+    }
+
+    public function upload() {
+        // the file property can be empty if the field is not required
+        if (null === $this->getImage()) {
+            return;
+        }
+
+        // aquí usa el nombre de archivo original pero lo debes
+        // sanear al menos para evitar cualquier problema de seguridad
+        // move takes the target directory and then the
+        // target filename to move to
+        $this->getImage()->move(
+                $this->getUploadRootDir(), $this->getImage()->getClientOriginalName()
+        );
+
+        // set the path property to the filename where you've saved the file
+        $this->image = $this->getImage()->getClientOriginalName();
+
+        // limpia la propiedad «file» ya que no la necesitas más
+        $this->file = null;
+    }
+
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsolutePath()) {
+            unlink($file);
+        }
+    }
+    
 }

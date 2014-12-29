@@ -16,7 +16,10 @@ security:
             entity: { class: Web\BlogBundle\Entity\Users, property: email }
     
     access_control:
-        - { path: ^/registro, roles: IS_AUTHENTICATED_ANONYMOUSLY}  
+        - { path: ^/registro, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/nuevo-post, roles: ROLE_USUARIO}
+        - { path: ^/editar-post, roles: ROLE_USUARIO}
+        - { path: ^/delete-post, roles: ROLE_USUARIO}
     
     encoders:
         Web\BlogBundle\Entity\Users: { algorithm: sha512, iterations: 10 }

@@ -1,5 +1,6 @@
 Web\BlogBundle\Entity\Posts:
     type: entity
+    repositoryClass: Web\BlogBundle\Entity\PostsRepository
     table: posts
     indexes:
         fk_category_post:

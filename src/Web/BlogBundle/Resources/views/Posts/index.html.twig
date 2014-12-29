@@ -7,5 +7,40 @@
 {%endblock%}
 
 {%block content %}
-HOME
+                 <h3>Inicio</h3>
+                 <hr/>
+        {% for post in posts %}
+             <article class="post">
+                 <div class="image col-lg-2 col-md-2 col-sm-2 col-xs-2" style="width:180px; height: 180px; overflow: hidden">
+                     <img src="{{ post.webPath }}" class="img" />
+                 </div>
+                 
+                 <div class="post_content col-lg-10 col-md-8 col-sm-8 col-xs-8">
+                    <h3><a href="#">{{ post.title }}</a></h3>
+                    <p>Categoría: {{ post.category.name }}</p>
+                    <p>Autor: {{ post.user.name }}</p>
+                    <p>
+                       Etiquetas:
+                       {% for tags in post.tagsPosts %}
+                           {{ tags.tag.name }}
+                       {% endfor %}
+                   </p>
+                   <p>
+                       <a href="{{ path('edit_post', {'post': post.id}) }}" class="btn btn-warning">Editar</a>
+                       <a href="{{ path('delete_post', {'post': post.id}) }}" class="btn btn-danger">Eliminar</a>
+                   </p>
+                </div>
+                <div class="clearfix"></div>
+             </article>
+            <hr/>
+        {% endfor %}
+            
+        <ul class="pagination">
+          <li><a href="#">&laquo;</a></li>
+            {% for i in 1..pagesCount %}
+                <li><a href="{{ path('home', {'page': i}) }}">{{ i }}</a></li> 
+            {% endfor %}
+          <li><a href="#">&raquo;</a></li>
+        </ul>
+
 {%endblock%}
