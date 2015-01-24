@@ -22,14 +22,16 @@ class PostsType extends AbstractType
             ->add('description','textarea', array("label" => "Descripción: ",
                     "required" => false,
                     "attr" => array('class' => 'form-control')))
-                
+               
+            // Campo de tipo entidad el solo saca las categorias asociadas
             ->add('category', 'entity', array(
                 "label" => "Categoria: ",
                 'class' => 'WebBlogBundle:Categories',
                 "attr" => array('class' => 'form-control'),
                 "property"=>"name"
             ))
-                
+               
+            // Campo tipo file que utilizaremos para subir ficheros
             ->add('image','file', array("label" => "Imagen: ",
                     "required" => false,
                     "attr" => array('class' => '')))
@@ -37,12 +39,12 @@ class PostsType extends AbstractType
             ->add('content','textarea', array("label" => "Contenido: ",
                     "required" => false,
                     "attr" => array('class' => 'form-control')))
-            
+                
+            //Campo sin mapeo para hacer el sistema de tags
             ->add('tagsPosts', 'text', array(
                 "label" => "Etiquetas: ",
                 'mapped'=>false,  
                 "attr" => array('class' => 'form-control'),
-
             ))
                 
             ->add('Guardar', 'submit', array("attr" => array('class' => 'btn btn-success')));
